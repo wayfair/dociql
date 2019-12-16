@@ -1,6 +1,6 @@
 {
   "name": "dociql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate beautiful static API documentation from GraphQL Schema",
   "preferGlobal": true,
   "bin": {
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "node bin/dociql -l eevee.png config.yml",
     "publish": "node bin/dociql -l eevee.png -t docs config.yml",
-    "test": "mocha && node bin/dociql -l eevee.png config.yml",
+    "test": "nyc --lines 85 --reporter=lcovonly --reporter=text-summary mocha && node bin/dociql -l eevee.png config.yml",
     "develop": "dociql -d",
     "start": "dociql -s"
   },
@@ -49,7 +49,7 @@
     "grunt-contrib-connect": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^3.0.0",
-    "grunt-contrib-handlebars": "^1.0.0",
+    "grunt-contrib-handlebars": "^2.0.0",
     "grunt-contrib-jshint": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.0",
     "grunt-contrib-watch": "^1.1.0",
@@ -63,13 +63,15 @@
     "json-stable-stringify": "^1.0.1",
     "lodash": "^4.17.12",
     "marked": "^0.7.0",
-    "node-sass": "^4.9.4",
+    "node-sass": "4.13.0",
     "sync-request": "^6.0.0",
     "tmp": "0.0.33",
     "trace": "^3.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "codecov": "^3.6.1",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1"
   }
 }
