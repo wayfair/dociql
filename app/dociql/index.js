@@ -32,6 +32,7 @@ module.exports = function(specPath, headers) {
             externalDocs: _.externalDocs
         })),
         paths: composePaths(spec.domains, graphQLSchema),
+        securityDefinitions: spec.securityDefinitions,
         definitions: jsonSchema.definitions
     }
 
