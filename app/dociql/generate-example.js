@@ -32,7 +32,7 @@ function generateQueryInternal(field, expandGraph, arguments, depth, typeCounts 
 
     while(returnType.ofType) {
         returnType = returnType.ofType;
-    };
+    }
 
     if (returnType.getFields) {
         var subQuery = null;
