@@ -96,6 +96,7 @@ $ dociql -h
   Options:
 
     -h, --help                   output usage information
+    -H, --header                 specify a custom auth token for the header (default: none)
     -V, --version                output the version number
     -C, --disable-css            omit CSS generation (default: false)
     -J, --disable-js             omit JavaScript generation (default: false)
