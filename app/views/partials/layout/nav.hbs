@@ -3,6 +3,7 @@
   @param {object} $context$ the whole swagger definition
   @api public
 --}}
+<img src="FirstRoot-Logo.png" style="width: 80%;">
 <nav id="nav" role="navigation">
   <h5>Topics</h5>
   {{#unless info.x-spectacle-hide}}
@@ -22,7 +23,7 @@
   {{/if}}
 
   {{#if showTagSummary}}
-    <h5>Operations</h5>
+    <h5>Queries</h5>
     {{#each tags}}
       <section>
         <a href="#tag-{{htmlId name}}">{{name}}</a>
