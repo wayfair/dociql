@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wayfair/dociql.git"
+    "url": "git+https://github.com/bitcero/dociql.git"
   },
   "engines": {
     "node": ">=8"
