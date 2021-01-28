@@ -66,51 +66,6 @@
     {{/each}}
   {{/if}}
 
-  {{#if showTagSummary}}
-    <h5>Operations</h5>
-    {{#each tags}}
-      <section>
-        <a href="#tag-{{htmlId name}}">{{name}}</a>
-        <ul>
-          {{#each operations}}
-            <li>
-              <a href="#operation-{{htmlId path}}-{{htmlId method}}">
-                {{#if summary}}
-                  {{summary}}
-                {{else}}
-                  {{toUpperCase method}} {{path}}
-                {{/if}}
-              </a>
-            </li>
-          {{/each}}
-        </ul>
-      </section>
-    {{/each}}
-  {{else}}
-    <h5>Paths</h5>
-    {{#each paths}}
-      <!-- <section>
-        <a href="#path-{{htmlId @key}}">{{@key}}</a>
-        <ul> -->
-          {{#each .}}
-            <!-- <li> -->
-              <a href="#operation-{{htmlId path}}-{{htmlId method}}">
-                {{#if summary}}
-                  {{summary}}
-                {{else}}
-                  {{toUpperCase method}} {{path}}
-                {{/if}}
-              </a>
-            <!-- </li> -->
-          {{/each}}
-        <!-- </ul>
-      </section> -->
-      {{#each .}}
-        {{!swagger/operation . operation=. method=@key path=../path}}
-      {{/each}}
-    {{/each}}
-  {{/if}}
-
   <h5>Schema Definitions</h5>
   {{#each definitions}}
     <a href="#definition-{{htmlId @key}}">
