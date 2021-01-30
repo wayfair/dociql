@@ -5,13 +5,14 @@ const fs = require("fs")
 const fetchSchema = require("./fetch-schema")
 const composePaths = require("./compose-paths")
 
-module.exports = function(specPath, headers) {
+module.exports = function(specPath, headers, introspectionUrl) {
     // read spec file content
     const fileContent = fs.readFileSync(specPath, "utf8")
     // deserialise
     const spec = yaml.safeLoad(fileContent)
-    // fetch graphQL Schema
-    const graphUrl = spec.introspection
+    // fetch graphQL Schema, if given an introspection url use that over the value in
+    // the spec
+    const graphUrl = introspectionUrl ? introspectionUrl : spec.introspection
     const {graphQLSchema, jsonSchema} = fetchSchema(graphUrl, headers)
 
     // parse URL
