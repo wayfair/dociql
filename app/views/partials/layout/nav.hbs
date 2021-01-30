@@ -3,29 +3,37 @@
   @param {object} $context$ the whole swagger definition
   @api public
 --}}
-<img src="FirstRoot-Logo.png" style="width: 80%;">
 <nav id="nav" role="navigation">
   <h5>Topics</h5>
-  {{#unless info.x-spectacle-hide}}
-    <a href="#introduction">Introduction</a>
-  {{/unless}}
+  <ul>
+    <li>
+      {{#unless info.x-spectacle-hide}}
+        <a href="#introduction">Introduction</a>
+      {{/unless}}
+    </li>
 
-  {{#if securityDefinitions}}
-   {{#unless securityDefinitions.x-spectacle-hide}}
-     <a href="#authentication">Authentication</a>
-   {{/unless}}
-  {{/if}}
+    <li>
+      {{#if securityDefinitions}}
+       {{#unless securityDefinitions.x-spectacle-hide}}
+         <a href="#authentication">Authentication</a>
+       {{/unless}}
+      {{/if}}
+    </li>
 
-  {{#if x-spectacle-topics}}
-    {{#each x-spectacle-topics}}
-      <a href="#topic-{{htmlId @key}}">{{@key}}</a>
-    {{/each}}
-  {{/if}}
-
+    <li>
+      {{#if x-spectacle-topics}}
+      {{#each x-spectacle-topics}}
+        <a href="#topic-{{htmlId @key}}">{{@key}}</a>
+      {{/each}}
+    {{/if}}
+    </li>
+  </ul>
+  
   {{#if showTagSummary}}
     <h5>Operations</h5>
+    <ul>
     {{#each tags}}
-      <section>
+      <li class="section">
         <a href="#tag-{{htmlId name}}">{{name}}</a>
         <ul>
           {{#each operations}}
@@ -40,8 +48,9 @@
             </li>
           {{/each}}
         </ul>
-      </section>
+      </li>
     {{/each}}
+    </ul>
   {{else}}
     <h5>Paths</h5>
     {{#each paths}}
@@ -66,12 +75,15 @@
       {{/each}}
     {{/each}}
   {{/if}}
-
+  </ul>
+  
   <h5>Schema Definitions</h5>
+  <ul>
   {{#each definitions}}
     <a href="#definition-{{htmlId @key}}">
       {{@key}}
     </a>
   {{/each}}  
 
+  </ul>
 </nav>

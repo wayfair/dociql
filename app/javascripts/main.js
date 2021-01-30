@@ -14,8 +14,8 @@ $(function() {
     });
 
     $nav.on('update.traverse', function(event, element) {
-      $nav.find('section').removeClass('expand');
-      var $section = element.parents('section:first');
+      $nav.find('.section').removeClass('expand');
+      var $section = element.parents('.section:first');
       if ($section.length) {
         $section.addClass('expand');
       }

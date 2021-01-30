@@ -39,13 +39,13 @@ button:focus {
 //
 
 #logo {
-  text-align: center;
+  text-align: left;
   padding-right: 0.5rem;
-  padding-top: 1rem;
+  padding-top: 0;
   padding-bottom: 0.25rem;
 
   img {
-    max-height: 75px;
+    max-height: 40px;
   }
 }
 
@@ -57,11 +57,11 @@ button:focus {
 
 #sidebar {
   padding-top: 1.5rem;
-  padding-left: 1.5rem;
+  padding-left: 0;
   padding-right: 1rem;
   padding-bottom: 2rem;
   border-right: 1px solid #eee;
-  background-color: #f6f6f6;
+  background-color: #FFFFFF; //#f6f6f6;
   height: 100vh;
   overflow: auto;
   position: fixed;
@@ -69,39 +69,62 @@ button:focus {
   left: 0;
   top: 0;
   width: $drawer-size;
+  
+  > nav > *, > #logo{
+    padding-left: 1.1rem;
+  }
+  
+  
 
   h5 {
     margin: 1.5rem 0 0.65rem;
     text-transform: uppercase;
-    color: scale-color($medium-gray, $lightness: -10%);
-    // color: $accent-color;
+    color: #2a2f45;
     font-size: 0.9rem;
+    font-weight: 600;
   }
 
   a {
     display: block;
     // font-size: 0.95rem;
-    margin: 0 0 0.25rem;
-    color: scale-color($black, $lightness: 15%);
+    margin: 0;
+    color: #697386; //scale-color($black, $lightness: 15%);
     white-space: nowrap;
     overflow: hidden;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
+    font-weight: 500;
+    padding: 0.2rem 1.1rem;
+    transition: ease all 200ms;
+    
+    &:hover{
+      color: #2a2f45;
+    }
 
     &.active {
       color: $primary-color;
+      background-color: lighten(#B0F2A4, 10%);
+      border-radius: 0 2px 2px 0;
     }
   }
 
   ul {
     list-style-type: none;
     padding: 0;
-    margin: 0 0 0.75rem 0.75rem;
+    margin: 0 0 0.75rem 0;
+    
+    > li{
+      
+    }
   }
 
-  section {
+  li.section {
     > ul {
       display: none;
+      
+      > li > a{
+        padding-left: 1.5rem;
+      }
     }
 
     &.expand {
@@ -146,7 +169,7 @@ button:focus {
       // width: 50%;
       display: block;
       // background-color: #2E2F28;
-      background-color: $black;
+      background-color: #FFF;//$black;
       position: absolute;
       right: 0;
       top: 0;
@@ -188,21 +211,8 @@ article {
 
   h1 {
     margin: 2.5rem 0 0;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    padding-left: $column-padding;
-    padding-right: $column-padding;
-    border-top: 1px solid #e8e8e8;
-    border-bottom: 1px solid #e2e2e2;
-    background-color: #f6f6f6;
-    // border-top: 1px solid #ddd;
-    // border-bottom: 1px solid #ccc;
-    // background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgi…pZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-    // background-size: 100%;
-    // background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff), color-stop(100%, #f9f9f9));
-    // background-image: -moz-linear-gradient(top, #fff, #f9f9f9);
-    // background-image: -webkit-linear-gradient(top, #fff, #f9f9f9);
-    // background-image: linear-gradient(to bottom, #fff, #f9f9f9);
+    font-weight: 500;
+    color: #2a2f45;
   }
 
   h1.doc-title {
@@ -213,7 +223,7 @@ article {
     font-weight: bold;
     background: transparent;
     border: none;
-    color: scale-color($black, $lightness: 20%);
+    color: #2a2f45; //scale-color($black, $lightness: 20%);
 
     span {
       display: none;
@@ -225,6 +235,7 @@ article {
 
   h2 {
     @extend .doc-separator;
+    font-weight: 600;
     margin-bottom: 0;
     padding-left: $column-padding;
     padding-right: $column-padding;
@@ -371,17 +382,27 @@ article {
 
     //color: $dark-gray;
     color: $white;
-    background-color: $dark-background-color;
+    background-color: #FFFFFF;
 
     h5 {
-      color: $white;
-      //color: $medium-gray;
-      font-size: 1rem;
-      opacity: 0.8;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4e576a;
 
       span {
-        opacity: 0.5;
         //color: $dark-gray;
+        font-weight: 500;
+      }
+      
+      &.code-box-title{
+        background: #4e576a;
+        margin: 0;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 12px;
+        color: $white;
       }
     }
 
@@ -404,6 +425,8 @@ article {
       word-spacing: normal;
       white-space: pre-wrap;
       word-break: normal;
+      background: #3c4356;
+      box-shadow: none;
     }
 
     tbody tr:nth-child(even) {

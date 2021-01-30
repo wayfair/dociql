@@ -60,7 +60,7 @@
       {{#each responses}}
         {{#schemaReferenceContext $ref}}          
           <section>
-            <h5>Response Example <span>({{@key}} {{httpResponseCode @key}})</span></h5>
+            <h5 class="code-box-title">Response Example <span>({{@key}} {{httpResponseCode @key}})</span></h5>
             {{>swagger/print-example schema.example}}
           </section>          
           {{#if headers}}

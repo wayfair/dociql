@@ -65,11 +65,11 @@
 // 1. Global
 // ---------
 
-$global-font-size: 95%; // 100%
+$global-font-size: 87%; // 100%
 $global-width: auto; // rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #1779ba,
+  primary: #00953B,
   secondary: #767676,
   success: #3adb76,
   warning: #ffae00,
@@ -79,11 +79,11 @@ $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $light-black: #353a3d;
-$black: #2d3134; //#0a0a0a;
+$black: #4f566b; //#2d3134; //#0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue","Ubuntu";// 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -157,7 +157,7 @@ $header-margin-bottom: 0.5rem;
 // );
 $header-styles: (
   small: (
-    'h1': ('font-size': 24),
+    'h1': ('font-size': 22),
     'h2': ('font-size': 20),
     'h3': ('font-size': 19),
     'h4': ('font-size': 18),
@@ -165,12 +165,12 @@ $header-styles: (
     'h6': ('font-size': 16),
   ),
   medium: (
-    'h1': ('font-size': 26),
-    'h2': ('font-size': 24),
-    'h3': ('font-size': 20),
-    'h4': ('font-size': 18),
-    'h5': ('font-size': 17),
-    'h6': ('font-size': 16),
+    'h1': ('font-size': 24),
+    'h2': ('font-size': 21),
+    'h3': ('font-size': 18),
+    'h4': ('font-size': 16),
+    'h5': ('font-size': 14),
+    'h6': ('font-size': 12),
   ),
 );
 $header-text-rendering: optimizeLegibility;
