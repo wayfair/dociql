@@ -30,15 +30,9 @@
     "builder",
     "generator"
   ],
-  "author": {
-    "name": "Gabriele Cappello",
-    "email": "gabriele.cappello@gmail.com"
-  },
+  "author": "Gabriele Cappello <gabriele.cappello@gmail.com>",
   "contributors": [
-    {
-      "name": "Dennis Miasoutov",
-      "email": "dmiasoutov@wayfair.com"
-    }
+    "Dennis Miasoutov <dmiasoutov@wayfair.com>"
   ],
   "license": "Apache-2.0",
   "bugs": {
@@ -86,5 +80,10 @@
     "codecov": "^3.6.1",
     "mocha": "^5.2.0",
     "nyc": "^14.1.1"
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
   }
 }
