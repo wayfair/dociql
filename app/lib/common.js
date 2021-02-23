@@ -104,6 +104,10 @@ var common = {
       return;
     }
 
+    if (Object.keys(ref).length === 0 && ref.constructor === Object) {
+      return;
+    }
+
     // NOTE: Large schemas with circular references have been known to exceed
     // maximum stack size, so bail out here before that happens.
     // A better fix is required.

@@ -43,7 +43,7 @@ module.exports = function (domains, graphQLSchema) {
             select: selectFields
         })
 
-        var examples = generateExample(queryTokens[0].toLowerCase(), target, expandFields)
+        var examples = generateExample(queryTokens[0].toLowerCase(), target, expandFields, usecase.errors)
 
         const responseSchema = convertTypeToSchema(target.type);
         responseSchema.example = examples.schema;
@@ -70,52 +70,14 @@ module.exports = function (domains, graphQLSchema) {
 
         args.push(bodyArg);
 
-        let responses = {
+        const responses = {
             '200': {
                 description: "Successful operation",
                 schema: responseSchema
-            }
+            },
+            ...examples.errors
         };
 
-        // Add error responses
-        if (usecase.errors !== undefined) {
-             usecase.errors.forEach((item) => {
-                responses[item.code] = {
-                    description: `${item.description}`,
-                    schema: {
-                        "$ref": "#/definitions/Errors",
-                        example: {
-                            type: "object",
-                            properties: {
-                                errors: {
-                                    type: "array",
-                                    items: {
-                                        type: "object",
-                                        properties: {
-                                            message: {
-                                                description: "Error description",
-                                                type: "string",
-                                                example: `${item.description}`
-                                            },
-                                            extensions: {
-                                                type: "object",
-                                                properties: {
-                                                    code: {
-                                                        description: "Error code",
-                                                        type: "string",
-                                                        example: `${item.code}`
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-             });
-        }
 
         result[operationId] = {
             post: {

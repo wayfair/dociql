@@ -127,9 +127,52 @@ function generateExampleSchema(name, type, expandGraph, depth) {
     }
 }
 
-function generateQuery(parentType, field, expandGraph) {
+function generateExampleSchemaErrors(errorList) {
+    const errors = [];
+    errorList.forEach((error) => {
+        errors[error.code] = {
+            description: error.description,
+            schema: {
+                "$ref": "#/definitions/Errors",
+                example: {
+                    type: "object",
+                    properties: {
+                        errors: {
+                            type: "array",
+                            items: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        description: "Error description",
+                                        type: "string",
+                                        example: error.description
+                                    },
+                                    extensions: {
+                                        type: "object",
+                                        properties: {
+                                            code: {
+                                                description: "Error code",
+                                                type: "string",
+                                                example: error.code
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    return errors;
+}
+
+function generateQuery(parentType, field, expandGraph, errorList = []) {
 
     const schema = generateExampleSchema(field.name, field.type, expandGraph, 1)
+    const errors = generateExampleSchemaErrors(errorList);
     const queryResult = generateQueryInternal(
         field,
         expandGraph,
@@ -157,6 +200,7 @@ function generateQuery(parentType, field, expandGraph) {
 
     return {
         query,
+        errors,
         schema: responseSchema,
         args: queryResult.args
     };
