@@ -21,6 +21,8 @@
     {{>swagger/paths}}
   {{/if}}
 
+  {{>swagger/error-catalogue errorSection=errorSection}}
+
   {{>swagger/definitions definitions=definitions}}
 
   {{! Powered by link }}

@@ -38,6 +38,19 @@
   @include named-section($msg-swagger-section-request-params);
 }
 
+.swagger-error-catalogue {
+  @include named-section($msg-swagger-section-error-catalogue);
+}
+
+.prop-error-code {
+  width: 58% !important;
+  padding: 0 !important;
+}
+
+.prop-error-description {
+  width: 42% !important;
+}
+
 .swagger-request-body {
   @include named-section($msg-swagger-section-request-body);
 

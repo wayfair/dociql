@@ -27,15 +27,44 @@ module.exports = function(specPath, headers) {
         schemes: [ parsedUrl.protocol.slice(0, -1) ],
         basePath: parsedUrl.pathname,
         externalDocs: spec.externalDocs,
-        tags: spec.domains.map(_ => ({ 
-            name: _.name, 
+        tags: spec.domains.map(_ => ({
+            name: _.name,
             description: _.description,
             externalDocs: _.externalDocs
         })),
         paths: composePaths(spec.domains, graphQLSchema),
         securityDefinitions: spec.securityDefinitions,
         definitions: addErrorDefinitions(jsonSchema.definitions),
-        errorCatalogue: 'hola'
+        errorSection: {
+            description: "Aqui ponemos una descripción de los errores catalogue maikel nait",
+            errorCatalogue: [
+                {
+                    name: "UNAUTHENTICATED",
+                    description: "The pharmacy has not been found by the criteria provided y resulta que esta es mas larga entoavia",
+                    messages: [
+                        {
+                            message: "Invalid credentials",
+                            description: "The client is not recognized by the application. The client is the azp attribute within the token payload."
+                        },
+                        {
+                            message: "Missing credentials",
+                            description: "The token was not found in the Authorization header."
+                        }
+                    ]
+                },
+                {
+                    name: "TODO_MU_MALAMENTERL",
+                    description: "this is a description with a very long description",
+                    messages: [
+                        {
+                            message: "Invalid credentials",
+                            description: "The client is not recognized by the application. The client is the azp attribute within the token payload."
+                        }
+                    ]
+                }
+            ]
+        }
+
     }
 
     return swaggerSpec

@@ -1,0 +1,58 @@
+{{!--
+  Original work Copyright (c) 2015 Nils Knappmeier
+  https://github.com/bootprint/bootprint-openapi
+
+  Renders the definition-section of the HTML-page.
+  @param {Definition[]} definitions a list of JSON-subschemas.
+  @api public
+--}}
+{{#if errorSection}}
+  <h1 id="errorCatalogue">Error catalogue</h1>
+  <div class="doc-row">
+    <div class="doc-copy">
+      <section class="json-schema-description">
+          {{errorSection.description}}
+      </section>
+    </div>
+  </div>
+  <div class="doc-row">
+      <div class="doc-copy">
+      <section class="swagger-error-catalogue">
+            {{#each errorSection.errorCatalogue}}
+                <div class="prop-row prop-group">
+                    <div class="prop-name prop-error-code">
+                        <div class="prop-title"><code>{{name}}</code></div>
+                    </div>
+                {{#each messages}}
+                    <div class="prop-value prop-error-description">
+                        {{>swagger/description message}}
+                    </div>
+                    <div class="prop-value prop-error-description">
+                        {{>swagger/description description}}
+                    </div>
+                {{/each}}
+                </div>
+            {{/each}}
+        </section>
+    </div>
+    <div class="doc-examples">
+        <section>
+            <h5>Example</h5>
+            <pre><code class="hljs language-json">{
+  <span class="hljs-attr">"errors"</span>: [
+    {
+      <span class="hljs-attr">"message"</span>: <span class="hljs-string">"This a sample message"</span>,
+      <span class="hljs-attr">"extensions"</span>: {
+        <span class="hljs-attr">"code"</span>: <span class="hljs-string">"ERROR_CODE"</span>
+      }
+    }
+  ]
+}
+</code></pre>
+
+            <!-- </div> -->
+        </section>
+    </div>
+  </div>
+
+{{/if}}
