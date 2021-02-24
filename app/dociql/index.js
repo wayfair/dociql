@@ -40,7 +40,7 @@ module.exports = function(specPath, headers) {
             errorCatalogue: [
                 {
                     name: "UNAUTHENTICATED",
-                    description: "The pharmacy has not been found by the criteria provided y resulta que esta es mas larga entoavia",
+                    description: "Unauthentication error. Usually a problem related to credentials.",
                     messages: [
                         {
                             message: "Invalid credentials",
@@ -49,6 +49,16 @@ module.exports = function(specPath, headers) {
                         {
                             message: "Missing credentials",
                             description: "The token was not found in the Authorization header."
+                        }
+                    ]
+                },
+                {
+                    name: "TODO_MU_MALAMENTERL",
+                    description: "this is a description with a very long description",
+                    messages: [
+                        {
+                            message: "Invalid credentials",
+                            description: "The client is not recognized by the application. The client is the azp attribute within the token payload."
                         }
                     ]
                 },

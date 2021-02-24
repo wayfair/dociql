@@ -20,18 +20,18 @@
       <section class="swagger-error-catalogue">
             {{#each errorSection.errorCatalogue}}
                 <div class="prop-row prop-group">
-                    <div class="prop-name prop-error-code">
-                        <div class="prop-title"><code>{{name}}</code></div>
-                    </div>
+                    <div id="error-{{name}}" class="prop-title prop-error-code">&lt;{{name}}&gt;</div>
+                </div>
                 {{#each messages}}
-                    <div class="prop-value prop-error-description">
-                        {{>swagger/description message}}
-                    </div>
-                    <div class="prop-value prop-error-description">
-                        {{>swagger/description description}}
+                    <div class="prop-row prop-inner">
+                        <div class="prop-value prop-error-message">
+                            {{>swagger/description message}}
+                        </div>
+                        <div class="prop-value prop-error-description">
+                            {{>swagger/description description}}
+                        </div>
                     </div>
                 {{/each}}
-                </div>
             {{/each}}
         </section>
     </div>

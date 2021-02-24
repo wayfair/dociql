@@ -43,12 +43,25 @@
 }
 
 .prop-error-code {
-  width: 58% !important;
-  padding: 0 !important;
+  color: #cc4b37;
+  font-weight: normal!important;
+  font-size: 1.1em;
+  font-family: monospace;
+  width: 40%;
+  float: left;
+  text-align: right;
+}
+
+.prop-error-message {
+  width: 40% !important;
+  text-align: right;
+  font-family: Courier, monospace;
 }
 
 .prop-error-description {
-  width: 42% !important;
+  width: 60% !important;
+  text-align: left;
+  color: #8a8a8a;
 }
 
 .swagger-request-body {
