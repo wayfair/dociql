@@ -35,46 +35,7 @@ module.exports = function(specPath, headers) {
         paths: composePaths(spec.domains, graphQLSchema),
         securityDefinitions: spec.securityDefinitions,
         definitions: addErrorDefinitions(jsonSchema.definitions),
-        errorSection: {
-            description: "Aqui ponemos una descripción de los errores catalogue maikel nait",
-            errorCatalogue: [
-                {
-                    name: "UNAUTHENTICATED",
-                    description: "Unauthentication error. Usually a problem related to credentials.",
-                    messages: [
-                        {
-                            message: "Invalid credentials",
-                            description: "The client is not recognized by the application. The client is the azp attribute within the token payload."
-                        },
-                        {
-                            message: "Missing credentials",
-                            description: "The token was not found in the Authorization header."
-                        }
-                    ]
-                },
-                {
-                    name: "TODO_MU_MALAMENTERL",
-                    description: "this is a description with a very long description",
-                    messages: [
-                        {
-                            message: "Invalid credentials",
-                            description: "The client is not recognized by the application. The client is the azp attribute within the token payload."
-                        }
-                    ]
-                },
-                {
-                    name: "TODO_MU_MALAMENTERL",
-                    description: "this is a description with a very long description",
-                    messages: [
-                        {
-                            message: "Invalid credentials",
-                            description: "The client is not recognized by the application. The client is the azp attribute within the token payload."
-                        }
-                    ]
-                }
-            ]
-        }
-
+        errorSection: spec.errorSection
     }
 
     return swaggerSpec
