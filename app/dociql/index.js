@@ -34,7 +34,8 @@ module.exports = function(specPath, headers) {
         })),
         paths: composePaths(spec.domains, graphQLSchema),
         securityDefinitions: spec.securityDefinitions,
-        definitions: addErrorDefinitions(jsonSchema.definitions)
+        definitions: addErrorDefinitions(jsonSchema.definitions),
+        errorCatalogue: 'hola'
     }
 
     return swaggerSpec
