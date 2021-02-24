@@ -42,6 +42,30 @@ domains:
        query: query.pokemon
        select: id name
        expand: evolutions
+errorSection:
+  description: "Description example of the error catalogue section"
+  errorCatalogue:
+    - name: UNAUTHENTICATED
+      messages:
+        - message: Invalid credentials
+          description: The token is not a valid JWT.
+        - message: Missing credentials
+          description: The token was not found in the Authorization header.
+        - message: Invalid user
+          description: The user id is not defined within the token payload.
+    - name: BAD_USER_INPUT
+      messages:
+        - message: The user e-mail is not valid
+          description: User invalid e-mail address.
+    - name: USER_NOT_FOUND
+      messages:
+        - message: Unknown error
+          description: UNKNOWN_ERROR
+    - name: SERVICE_TEMPORARILY_UNAVAILABLE
+      messages:
+        - message: Service temporarily unavailable
+          description: The PaaS platform has problems.
+
 # securityDefinitions:
 #   cheesy_auth:
 #     type: oauth2
