@@ -110,6 +110,8 @@ $ dociql -h
     -f, --target-file <file>     the target build HTML file (default: index.html)
     -a, --app-dir <dir>          the application source directory (default: app)
     -l, --logo-file <file>       specify a custom logo file (default: null)
+    -1, --one-file               embed all resources (CSS and JS) into the same file (default: false)
+    -u, --introspection-url <url>              specify a custom url to use for introspection (default: none)
     -c, --config-file <file>     specify a custom configuration file (default: app/lib/config.js)
 ```
 
