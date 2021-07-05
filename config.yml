@@ -1,6 +1,6 @@
-introspection: https://graphql-pokemon2.vercel.app
+introspection: http://puripuri000.sirclo.me.dmmy.me/graphql
 servers:
-  - url: https://graphql-pokemon2.vercel.app
+  - url: http://puripuri000.sirclo.me.dmmy.me/graphql
     description: Test Server  
 info:
   description: |
@@ -11,37 +11,19 @@ info:
     GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
   version: 1.0.0
   title: Pokémon API
-  termsOfService: 'https://graphql-pokemon2.vercel.app/terms'
+  termsOfService: 'http://puripuri000.sirclo.me.dmmy.me/graphql'
   contact:
-    email: dmiasoutov@wayfair.com
+    email: irna@sirclo.com
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 domains:
-  - name: Fetching Pokémons
+  - name: Fetching Tenant information
     description: Base methods to fetch pokemon information.
     usecases:
-     - name: Fetch Pokémons
-       description: Query list of Pokémon
-       query: query.pokemons
-       expand: weight,height       
-     - name: Fetch single Pokémon
-       description: Query any Pokémon by number or name
-       query: query.pokemon
-       expand: weight,height
-  - name: Evolution & Attacks
-    description: Custom methods to fetch pokemon
-    usecases:
-     - name: Query Attack Rating
-       description: Query Pokémon
-       query: query.pokemon       
-       select: id name
-       expand: attacks,fast,special
-     - name: Query Evolutions
-       description: Query Pokémon evolutions
-       query: query.pokemon
-       select: id name
-       expand: evolutions
+    - name: Fetch tenant 123
+      description: Query tenant information with given id
+      query: query.tenant
 # securityDefinitions:
 #   cheesy_auth:
 #     type: oauth2
