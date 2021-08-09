@@ -17,8 +17,14 @@ module.exports = function (graphUrl, authHeader) {
 function fetchSchemaFromFile(graphUrl) {
   const filePath = graphUrl.replace("file://", "");
   const fileContent = fs.readFileSync(filePath, "utf-8");
+  let graphQLSchema;
 
-  const graphQLSchema = buildSchema(fileContent);
+  try {
+    graphQLSchema = buildSchema(fileContent);
+  } catch (e) {
+    console.error(`Encountered an error parsing the schema file. Is ${filePath} in GraphQL SDL format?`);
+    throw e;
+  }
   
   const introspection = graphqlSync(graphQLSchema, getIntrospectionQuery()).data;
 
