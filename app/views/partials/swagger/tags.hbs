@@ -4,6 +4,11 @@
       <div class="tag-description doc-row">
         <div class="doc-copy">
           {{md description}}
+          {{#if diagram_image_name}}
+            <div class="diagram">
+              <img src="images/{{diagram_image_name}}" title="{{diagram_image_name}}" />
+            </div>
+          {{/if}}
         </div>
       </div>
     {{/if}}

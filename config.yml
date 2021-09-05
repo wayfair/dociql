@@ -1,61 +1,60 @@
-introspection: https://graphql-pokemon2.vercel.app
+introspection: https://api.staging365.net/v1.0/graphql
+
 servers:
-  - url: https://graphql-pokemon2.vercel.app
-    description: Test Server  
+  - url: https://api.staging365.net/v1.0/graphql
+    description: Development
+  - url: https://api.page365.com/v1.0/graphql
+    description: Production
+
 info:
+  title: Page365 API
   description: |
-    Welcome to the sample Pokémon API reference. This is a live example of how you can use [DociQL](https://github.com/wayfair/dociql) in conjunction with [GraphQL](https://graphql.org/) to generate beautiful static documentation for your own APIs.
+    Welcome to Page365 API. This standard allows you to become a supported partner, manage order and inventory for over 300,000 merchants on the Page365 platform.
 
-    The Pokémon API is GraphQL API. It's schema can be fetched using introspection query and can be used for generating code, documentations, tests etc.
+    API is implemented in standard GraphQL protocol, and we do not yet have language libraries available. You can view examples for how to invoke the requests in the dark area to the right.
 
-    GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
-  version: 1.0.0
-  title: Pokémon API
-  termsOfService: 'https://graphql-pokemon2.vercel.app/terms'
-  contact:
-    email: dmiasoutov@wayfair.com
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 domains:
-  - name: Fetching Pokémons
-    description: Base methods to fetch pokemon information.
+  - name: Registation
+    description: |
+      Create your app profile and use it as main account to communicate with Page365.
+      After your create profile request send, Please contact us for approvng your profile and we will send you a SECRET_KEY.
+      Which your software will use it as credential for granting merchant token
+    diagram_image_name: registration.png
     usecases:
-     - name: Fetch Pokémons
-       description: Query list of Pokémon
-       query: query.pokemons
-       expand: weight,height       
-     - name: Fetch single Pokémon
-       description: Query any Pokémon by number or name
-       query: query.pokemon
-       expand: weight,height
-  - name: Evolution & Attacks
-    description: Custom methods to fetch pokemon
+    - name: Create profile
+      description: Create a profile which you will use to communicate with Page365
+      query: mutation.createPublicApp
+  - name: Authentication
+    description: |
+      By query merchant information you need to grant access token which unique per merchant (1-to-1).
+    diagram_image_name: authentication.png
     usecases:
-     - name: Query Attack Rating
-       description: Query Pokémon
-       query: query.pokemon       
-       select: id name
-       expand: attacks,fast,special
-     - name: Query Evolutions
-       description: Query Pokémon evolutions
-       query: query.pokemon
-       select: id name
-       expand: evolutions
-# securityDefinitions:
-#   cheesy_auth:
-#     type: oauth2
-#     authorizationUrl: 'http://cheesy.sourcey.com/api/oauth/dialog'
-#     description: Provides OAuth access to the cheese
-#     flow: implicit
-#     scopes:
-#       'write:cheeses': Modify cheeses in your account
-#       'read:cheeses': Read your cheeses
-#   api_key:
-#     type: apiKey
-#     name: api_key
-#     description: Provides API Key access to the cheese
-#     in: header
-# externalDocs:
-#   description: Find out more about Swagger
-#   url: 'http://swagger.io'
+    - name: Generate access token
+      description: Generate access token for accessing merchant information
+      query: query.generateToken
+  - name: Product
+    description: Fetch merchant product information
+    usecases:
+    - name: Fetch products
+      description: All product owned by mechant
+      query: query.products
+    - name: Fetch product
+      description: Eligible product owned by mechant
+      query: query.product
+  - name: Product Category
+    description: Fetch merchant product category information
+    usecases:
+    - name: Fetch product categories
+      description: All product category owned by mechant
+      query: query.productCategories
+    - name: Fetch product category
+      description: Eligible product category owned by mechant
+      query: query.productCategory
+
+schema:
+  except: [
+    'Account', 'Home', 'User', 'Plan', 'PageInfo', 'Order', 'OrderItem',
+    # 'Account', 'Boolean', 'Customer', 'Float', 'ID', 'Int', 'ISO8601DateTime',
+    # 'ProductCategoryConnection', 'ProductCategoryEdge', 'ProductConnection', 'ProductEdge',
+    # 'ProductVariantConnection', 'ProductVariantEdge'
+  ]

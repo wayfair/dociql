@@ -7,11 +7,9 @@
     <button class="close-button" aria-label="Close menu" type="button" data-drawer-close>
       <span aria-hidden="true">×</span>
     </button>
-    {{#if logo}}
-      <div id="logo">
-        <img src="images/{{logo}}" title="{{info.title}}" />
-      </div>
-    {{/if}}
+    <div id="logo">
+      <img src="images/logo.png" title="{{info.title}}" />
+    </div>
     {{>layout/nav}}
   </div>
   {{!layout/topbar}}
