@@ -7,7 +7,7 @@ servers:
     description: Production
 
 info:
-  title: Page365 API
+  title: Page365 API | Test github action
   description: |
     Welcome to Page365 API. This standard allows you to become a supported partner, manage order and inventory for over 300,000 merchants on the Page365 platform.
 
