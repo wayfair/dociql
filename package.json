@@ -10,7 +10,7 @@
     "build": "node bin/dociql config.yml",
     "publish": "node bin/dociql -t docs config.yml",
     "test": "nyc --lines 85 --reporter=lcovonly --reporter=text-summary mocha && node bin/dociql config.yml",
-    "develop": "node bin/dociql -d",
+    "develop": "node bin/dociql -d config.yml",
     "start": "node bin/dociql -s"
   },
   "repository": {
