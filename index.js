@@ -64,17 +64,17 @@ module.exports = function (options) {
     //= Setup Grunt to do the heavy lifting
 
     grunt.initConfig(_.merge({ pkg: package }, config))
-    if(opts.quiet) {
-        grunt.log.writeln = function() {}
-        grunt.log.write = function() {}
-        grunt.log.header = function() {}
-        grunt.log.ok = function() {}
+    if (opts.quiet) {
+        grunt.log.writeln = function () { }
+        grunt.log.write = function () { }
+        grunt.log.header = function () { }
+        grunt.log.ok = function () { }
     }
 
     var cwd = process.cwd() // change CWD for loadNpmTasks global install
     var exists = grunt.file.exists(path.join(path.resolve('node_modules'),
-                                             'grunt-contrib-concat',
-                                             'package.json'))
+        'grunt-contrib-concat',
+        'package.json'))
     if (!exists)
         process.chdir(__dirname)
 
@@ -92,14 +92,14 @@ module.exports = function (options) {
 
     process.chdir(cwd)
 
-    grunt.registerTask('predentation', 'Remove indentation from generated <pre> tags.', function() {
+    grunt.registerTask('predentation', 'Remove indentation from generated <pre> tags.', function () {
         var html = fs.readFileSync(opts.cacheDir + '/' + opts.targetFile, 'utf8')
-        html = html.replace(/<pre.*?><code.*?>([\s\S]*?)<\/code><\/pre>/gmi, function(x, y) {
+        html = html.replace(/<pre.*?><code.*?>([\s\S]*?)<\/code><\/pre>/gmi, function (x, y) {
             var lines = x.split('\n'), level = null;
             if (lines) {
 
                 // Determine the level of indentation
-                lines.forEach(function(line) {
+                lines.forEach(function (line) {
                     if (line[0] === '<') return;
                     var wsp = line.search(/\S/)
                     level = (level === null || (wsp < line.length && wsp < level)) ? wsp : level;
@@ -107,7 +107,7 @@ module.exports = function (options) {
 
                 // Remove indentation
                 var regex = new RegExp('^\\s{' + level + '}')
-                lines.forEach(function(line, index, lines) {
+                lines.forEach(function (line, index, lines) {
                     lines[index] = line.replace(regex, '')
                 })
             }
@@ -125,7 +125,7 @@ module.exports = function (options) {
     grunt.registerTask('develop', ['server', 'watch'])
 
     // Reload template data when watch files change
-    grunt.event.on('watch', function() {
+    grunt.event.on('watch', function () {
         try {
             grunt.config.set('compile-handlebars.compile.templateData', loadData())
         } catch (e) {
@@ -134,32 +134,33 @@ module.exports = function (options) {
     })
 
     // Report, etc when all tasks have completed.
-    var donePromise = new Promise(function(resolve, reject) {
-      grunt.task.options({
-          error: function(e) {
-              if(!opts.quiet) {
-                  console.warn('Task error:', e)
-              }
-              // TODO: fail here or push on?
-              reject(e)
-          },
-          done: function() {
-              if(!opts.quiet) {
-                  console.log('All tasks complete')
-              }
-              resolve()
-          }
-      })
+    var donePromise = new Promise(function (resolve, reject) {
+        grunt.task.options({
+            error: function (e) {
+                if (!opts.quiet) {
+                    console.warn('Task error:', e)
+                }
+                // TODO: fail here or push on?
+                reject(e)
+            },
+            done: function () {
+                if (!opts.quiet) {
+                    console.log('All tasks complete')
+                }
+                resolve()
+            }
+        })
     })
 
 
     //
     //= Run the shiz
-
+    console.log(opts.startServer)
     if (opts.startServer) {
         grunt.task.run('server')
     }
     else {
+        grunt.task.run('copy:images')
         if (!opts.disableCss) {
             grunt.task.run(['foundation', 'stylesheets'])
         }

@@ -1151,6 +1151,8 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
             display: inline-block; }
     #spectacle article .doc-row {
       margin: 2rem 0 20px; }
+    #spectacle article .doc-copy .diagram {
+      text-align: center; }
     #spectacle article .doc-examples {
       padding-left: 2.25rem !important;
       padding-right: 2.25rem !important;

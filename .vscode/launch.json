@@ -11,9 +11,9 @@
             "cwd": "${workspaceRoot}",
             "program": "${workspaceFolder}/bin/dociql.js",
             "protocol": "inspector",
-            "args": [                
-                "-l", 
-                "eevee.png",
+            "args": [
+                "-l",
+                "logo.png",
                 "config.yml"
             ]
         }

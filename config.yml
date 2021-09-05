@@ -1,61 +1,62 @@
-introspection: https://graphql-pokemon2.vercel.app
+introspection: https://api.staging365.net/v1.0/graphql
+
 servers:
-  - url: https://graphql-pokemon2.vercel.app
-    description: Test Server  
+  - url: https://api.staging365.net/v1.0/graphql
+    description: Development
+  - url: https://api.page365.com/v1.0/graphql
+    description: Production
+
 info:
+  title: Page365 API
   description: |
-    Welcome to the sample Pokémon API reference. This is a live example of how you can use [DociQL](https://github.com/wayfair/dociql) in conjunction with [GraphQL](https://graphql.org/) to generate beautiful static documentation for your own APIs.
+    Welcome to Page365 API. Page365 allow access to merchant information on Page365 ecosystem by external software (API) for the greater service and merchant convenience.
 
-    The Pokémon API is GraphQL API. It's schema can be fetched using introspection query and can be used for generating code, documentations, tests etc.
+    This API  use GraphQL as standard protocol. Implement by follow document below.
 
-    GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
-  version: 1.0.0
-  title: Pokémon API
-  termsOfService: 'https://graphql-pokemon2.vercel.app/terms'
-  contact:
-    email: dmiasoutov@wayfair.com
-  license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 domains:
-  - name: Fetching Pokémons
-    description: Base methods to fetch pokemon information.
+  - name: Registation
+    description: |
+      Before using API, you need to register your app profile and get approve by Page365 and we will send you SECRET_KEY for using in authentication process as flowchart below.
+    diagram_image_name: registration.png
     usecases:
-     - name: Fetch Pokémons
-       description: Query list of Pokémon
-       query: query.pokemons
-       expand: weight,height       
-     - name: Fetch single Pokémon
-       description: Query any Pokémon by number or name
-       query: query.pokemon
-       expand: weight,height
-  - name: Evolution & Attacks
-    description: Custom methods to fetch pokemon
+    - name: Create profile
+      description: Create profile for using in authentication process and grant permission to fetch merchant information. These argument some will be display to merchant for notify them that your integration is available such as name, some will be use for report and notify an update (deprecate API) such as phone and email
+      query: mutation.createPublicApp
+  - name: Authentication
+    description: |
+      After profile approved, Page365 will send you SECRET_KEY which will be use as part of access token creating process. Access token is needed for every request as an identifier and each merchant will use difference unique access token even from the same profile.
+      
+      In access token creation process you will need 2 parameters (SECRET_KEY, MERCHANT_TOKEN) you can find MERCHANT_TOKEN from each merchant directly and
+      
+      PROVIDER NEEDS TO KEEP MERCHANT_TOKEN IN PRIVATE AND NOT ALLOW TO PUBLIC TOKEN TO OTHER
+    diagram_image_name: authentication.png
     usecases:
-     - name: Query Attack Rating
-       description: Query Pokémon
-       query: query.pokemon       
-       select: id name
-       expand: attacks,fast,special
-     - name: Query Evolutions
-       description: Query Pokémon evolutions
-       query: query.pokemon
-       select: id name
-       expand: evolutions
-# securityDefinitions:
-#   cheesy_auth:
-#     type: oauth2
-#     authorizationUrl: 'http://cheesy.sourcey.com/api/oauth/dialog'
-#     description: Provides OAuth access to the cheese
-#     flow: implicit
-#     scopes:
-#       'write:cheeses': Modify cheeses in your account
-#       'read:cheeses': Read your cheeses
-#   api_key:
-#     type: apiKey
-#     name: api_key
-#     description: Provides API Key access to the cheese
-#     in: header
-# externalDocs:
-#   description: Find out more about Swagger
-#   url: 'http://swagger.io'
+    - name: Generate access token
+      description: Generate access token for using in identification when calling API
+      query: query.generateToken
+  - name: Product
+    description: Fetch merchant product information
+    usecases:
+    - name: Fetch products
+      description: Fetch all product information owned by merchant
+      query: query.products
+    - name: Fetch product
+      description: Fetch product information by id
+      query: query.product
+  - name: Product Category
+    description: Fetch merchant product category information
+    usecases:
+    - name: Fetch product categories
+      description: Fetch all product category information owned by merchant
+      query: query.productCategories
+    - name: Fetch product category
+      description: Fetch product category information by id
+      query: query.productCategory
+
+schema:
+  except: [
+    'Account', 'Home', 'User', 'Plan', 'PageInfo', 'Order', 'OrderItem',
+    # 'Account', 'Boolean', 'Customer', 'Float', 'ID', 'Int', 'ISO8601DateTime',
+    # 'ProductCategoryConnection', 'ProductCategoryEdge', 'ProductConnection', 'ProductEdge',
+    # 'ProductVariantConnection', 'ProductVariantEdge'
+  ]
