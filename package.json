@@ -9,7 +9,7 @@
   "scripts": {
     "build": "node bin/dociql config.yml",
     "publish": "node bin/dociql -t docs config.yml",
-    "test": "nyc --lines 85 --reporter=lcovonly --reporter=text-summary mocha && node bin/dociql -l logo.png config.yml",
+    "test": "nyc --lines 85 --reporter=lcovonly --reporter=text-summary mocha && node bin/dociql config.yml",
     "develop": "node bin/dociql -d",
     "start": "node bin/dociql -s"
   },
