@@ -9,46 +9,48 @@ servers:
 info:
   title: Page365 API
   description: |
-    Welcome to Page365 API. This standard allows you to become a supported partner, manage order and inventory for over 300,000 merchants on the Page365 platform.
+    Welcome to Page365 API. Page365 allow access to merchant information on Page365 ecosystem by external software (API) for the greater service and merchant convenience.
 
-    API is implemented in standard GraphQL protocol, and we do not yet have language libraries available. You can view examples for how to invoke the requests in the dark area to the right.
+    This API  use GraphQL as standard protocol. Implement by follow document below.
 
 domains:
   - name: Registation
     description: |
-      Create your app profile and use it as main account to communicate with Page365.
-      After your create profile request send, Please contact us for approvng your profile and we will send you a SECRET_KEY.
-      Which your software will use it as credential for granting merchant token
+      Before using API, you need to register your app profile and get approve by Page365 and we will send you SECRET_KEY for using in authentication process as flowchart below.
     diagram_image_name: registration.png
     usecases:
     - name: Create profile
-      description: Create a profile which you will use to communicate with Page365
+      description: Create profile for using in authentication process and grant permission to fetch merchant information. These argument some will be display to merchant for notify them that your integration is available such as name, some will be use for report and notify an update (deprecate API) such as phone and email
       query: mutation.createPublicApp
   - name: Authentication
     description: |
-      By query merchant information you need to grant access token which unique per merchant (1-to-1).
+      After profile approved, Page365 will send you SECRET_KEY which will be use as part of access token creating process. Access token is needed for every request as an identifier and each merchant will use difference unique access token even from the same profile.
+      
+      In access token creation process you will need 2 parameters (SECRET_KEY, MERCHANT_TOKEN) you can find MERCHANT_TOKEN from each merchant directly and
+      
+      PROVIDER NEEDS TO KEEP MERCHANT_TOKEN IN PRIVATE AND NOT ALLOW TO PUBLIC TOKEN TO OTHER
     diagram_image_name: authentication.png
     usecases:
     - name: Generate access token
-      description: Generate access token for accessing merchant information
+      description: Generate access token for using in identification when calling API
       query: query.generateToken
   - name: Product
     description: Fetch merchant product information
     usecases:
     - name: Fetch products
-      description: All product owned by mechant
+      description: Fetch all product information owned by merchant
       query: query.products
     - name: Fetch product
-      description: Eligible product owned by mechant
+      description: Fetch product information by id
       query: query.product
   - name: Product Category
     description: Fetch merchant product category information
     usecases:
     - name: Fetch product categories
-      description: All product category owned by mechant
+      description: Fetch all product category information owned by merchant
       query: query.productCategories
     - name: Fetch product category
-      description: Eligible product category owned by mechant
+      description: Fetch product category information by id
       query: query.productCategory
 
 schema:
