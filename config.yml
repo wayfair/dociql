@@ -1,9 +1,9 @@
-introspection: https://api.staging365.net/v1.0/graphql
+introspection: https://api.page365.net/v1.0/graphql
 
 servers:
   - url: https://api.staging365.net/v1.0/graphql
     description: Development
-  - url: https://api.page365.com/v1.0/graphql
+  - url: https://api.page365.net/v1.0/graphql
     description: Production
 
 info:
