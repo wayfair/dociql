@@ -189,8 +189,8 @@ Good luck and enjoy DociQL!
 [npm-downloads]: https://img.shields.io/npm/dw/dociql
 [npm-url]: https://www.npmjs.com/package/dociql
 
-[builds]: https://travis-ci.org/wayfair/dociql.svg?branch=master
-[builds-url]: https://travis-ci.org/wayfair/dociql
+[builds]: https://app.travis-ci.com/wayfair/dociql.svg?branch=master
+[builds-url]: https://app.travis-ci.com/wayfair/dociql
 
 [cover]: https://codecov.io/gh/wayfair/dociql/branch/master/graph/badge.svg
 [cover-url]: https://codecov.io/gh/wayfair/dociql
