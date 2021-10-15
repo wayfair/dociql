@@ -1,4 +1,4 @@
-introspection: https://api.page365.net/v1.0/graphql
+introspection: https://api.staging365.net/v1.0/graphql
 
 servers:
   - url: https://api.staging365.net/v1.0/graphql
@@ -52,6 +52,15 @@ domains:
     - name: Fetch product category
       description: Fetch product category information by id
       query: query.productCategory
+  - name: Customer
+    description: Fetch merchant customer information
+    usecases:
+    - name: Fetch customers
+      description: Fetch all customer information owned by merchant
+      query: query.customers
+    - name: Fetch customer
+      description: Fetch customer information by id
+      query: query.customer
 
 schema:
   except: [
