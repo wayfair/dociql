@@ -52,11 +52,26 @@ domains:
     - name: Fetch product category
       description: Fetch product category information by id
       query: query.productCategory
+  - name: Order
+    description: Fetch merchant order information
+    usecases:
+    - name: Fetch orders
+      description: Fetch all order information owned by merchant
+      query: query.orders
+    - name: Fetch order
+      description: Fetch order information by id
+      query: query.order
+  - name: Customer
+    description: Fetch merchant customer information
+    usecases:
+    - name: Fetch customers
+      description: Fetch all customer information owned by merchant
+      query: query.customers
+    - name: Fetch customer
+      description: Fetch customer information by id
+      query: query.customer
 
 schema:
   except: [
-    'Account', 'Home', 'User', 'Plan', 'PageInfo', 'Order', 'OrderItem',
-    # 'Account', 'Boolean', 'Customer', 'Float', 'ID', 'Int', 'ISO8601DateTime',
-    # 'ProductCategoryConnection', 'ProductCategoryEdge', 'ProductConnection', 'ProductEdge',
-    # 'ProductVariantConnection', 'ProductVariantEdge'
+    'Account', 'Home', 'Plan', 'PageInfo',
   ]
