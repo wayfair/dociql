@@ -21,6 +21,13 @@ button:focus {
   @include small-label($secondary-color);
 }
 
+.webhook-section {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #f68b1f;
+  font-size: .9rem;
+}
+
 //
 // Topbar layout
 

@@ -38,6 +38,10 @@
   @include named-section($msg-swagger-section-request-params);
 }
 
+.swagger-webhook-body {
+  @include named-section($msg-swagger-section-webhook-body);
+}
+
 .swagger-request-body {
   @include named-section($msg-swagger-section-request-body);
 
