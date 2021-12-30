@@ -33,6 +33,7 @@ module.exports = function (specPath, headers, introspectionUrl) {
             name: _.name,
             description: _.description,
             diagram_image_name: _.diagram_image_name,
+            sections: _.sections,
             externalDocs: _.externalDocs
         })),
         paths: composePaths(spec.domains, graphQLSchema),
