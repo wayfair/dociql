@@ -1,4 +1,4 @@
-introspection: https://api.page365.net/v1.0/graphql
+introspection: https://farn-brown.staging365.net:5000/api/v1.0/graphql
 
 servers:
   - url: https://api.staging365.net/v1.0/graphql
@@ -20,7 +20,7 @@ domains:
     diagram_image_name: registration.png
     usecases:
     - name: Create profile
-      description: Create profile for using in authentication process and grant permission to fetch merchant information. These argument some will be display to merchant for notify them that your integration is available such as name, some will be use for report and notify an update (deprecate API) such as phone and email
+      description: Create profile for using in authentication process and grant permission to fetch merchant information. These argument some will be display to merchant for notify them that your integration is available such as name, some will be use for report and notify an update (deprecate API) such as phone and email, some will be use for sending an event when have occurred on merchant accounts such as webhookUrl
       query: mutation.createPublicApp
   - name: Authentication
     description: |
@@ -34,6 +34,176 @@ domains:
     - name: Generate access token
       description: Generate access token for using in identification when calling API
       query: query.generateToken
+  - name: Webhooks
+    description: |
+      After the profile is approved and allowed by the merchant account, Page365 will send an event that has occurred on the merchant account.
+
+      Validating Payloads: - 
+        Every webhook will have SHA1 signature included in the request's X-Hub-Signature header, preceded with sha1=. You don't have to validate the payload, but you should.
+      
+      To validate the payload: - 
+        Generate a SHA1 signature using the payload and your secret_key - Compare your signature to the signature in the X-Hub-Signature header (everything after sha1=). If the signatures match, the payload is genuine.
+
+      HTTP method: - Use POST http method for send to webhook url.
+    sections:
+      - name: "Order event"
+        desc: | 
+          Page365 will send to webhook url an order object when the order has updated or created.
+        webhook_body:
+          - field: key
+            type: String
+            desc: event type should be "order.create" for create event and "order.update" for update event
+          - field: merchantToken
+            type: String
+            desc: a token reference with the merchant account.
+          - field: body
+            type: Order object
+            desc: an order object.
+        sub_body:
+          - section_name: Order object
+            fields:
+              - field: id
+                type: ID
+                desc: Unique object reference number.
+              - field: stage
+                type: String
+                desc: Can be (draft, unpaid, transferred, paid, shipped).
+              - field: createdAt
+                type: ISO8601DateTime
+                desc: Timestamp when order create.
+              - field: note
+                type: String
+                desc: Note.
+              - field: shippingCost
+                type: Float
+                desc: Delivery cost in baht.
+              - field: discount
+                type: Float
+                desc: Discount.
+              - field: subtotal
+                type: Float
+                desc: Sum of items price.
+              - field: total
+                type: Float
+                desc: Final price which send to customer.
+              - field: "no"
+                type: Int
+                desc: No.
+              - field: expiresOn
+                type: ISO8601DateTime
+                desc: Expire date.
+              - field: paidAmount
+                type: Float
+                desc: Total amount paid by customer.
+              - field: paidAt
+                type: ISO8601DateTime
+                desc: Timestamp when customer paid.
+              - field: slug
+                type: String
+                desc: Slug.
+              - field: trackingCode
+                type: String
+                desc: Delivery tracking code.
+              - field: itemsCount
+                type: Int
+                desc: Number of item in this order.
+              - field: shippingOption
+                type: String
+                desc: Shipping title.
+              - field: sent
+                type: Boolean
+                desc: True if customer already receive order inform.
+              - field: sold
+                type: Boolean
+                desc: Customer already paid (stage paid, shipped).
+              - field: promotionCode
+                type: String
+                desc: Promotion code which be use in this order.
+              - field: vat
+                type: Float
+                desc: Vat amount.
+              - field: vatIncluded
+                type: Boolean
+                desc: Vat include.
+              - field: taxInvoiceNo
+                type: String
+                desc: Tax no.
+              - field: customerName
+                type: String
+                desc: customer name.
+              - field: customerAddress
+                type: String
+                desc: customer address.
+              - field: customerEmail
+                type: String
+                desc: customer email.
+              - field: customerPhone
+                type: String
+                desc: customer phone.
+              - field: auto
+                type: Boolean
+                desc: Create by CF feature.
+              - field: url
+                type: String
+                desc: Detail link.
+              - field: items
+                type: "Array<OrderItem> "
+                desc: Items in order.
+              - field: bankAccount
+                type: BankAccount Object
+                desc: Bank account for this order payment.
+              - field: paymentSlip
+                type: PaymentSlip Object
+                desc: Payment slip.
+          - section_name: OrderItem object
+            fields:
+              - field: id
+                type: ID
+                desc: Unique object reference number.
+              - field: name
+                type: String
+                desc: Name.
+              - field: note
+                type: String
+                desc: Note.
+              - field: quantity
+                type: Int
+                desc: Quantity.
+              - field: price
+                type: Float
+                desc: Price.
+              - field: subtotal
+                type: Float
+                desc: Sum of items price.
+              - field: productId
+                type: ID
+                desc: Unique object reference number of product.
+          - section_name: BankAccount object
+            fields:
+              - field: id
+                type: ID
+                desc: Unique object reference number.
+              - field: "no"
+                type: String
+                desc: Bank account number.
+              - field: name
+                type: String
+                desc: Name.
+              - field: bankSlug
+                type: String
+                desc: Provider code.
+          - section_name: PaymentSlip object
+            fields:
+              - field: statusCode
+                type: Int
+                desc: Verify code.
+              - field: createdAt
+                type: ISO8601DateTime
+                desc: Create at.
+              - field: updatedAt
+                type: ISO8601DateTime
+                desc: Update at.
+        example_link: https://gist.github.com/jaikox2/aff78611b25f33eaa242e85a2715062e.js
   - name: Product
     description: Fetch merchant product information
     usecases:
