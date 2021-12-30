@@ -94,7 +94,9 @@ module.exports = function (domains, graphQLSchema) {
     const paths = {}
 
     domains.forEach(domain => {
-        domain.usecases.forEach(u => Object.assign(paths, composePath(domain.name, u)));
+        if (domain.usecases) {
+            domain.usecases.forEach(u => Object.assign(paths, composePath(domain.name, u)));
+        }
     });
 
     return paths
