@@ -2,13 +2,58 @@
     <h1 id="tag-{{htmlId name}}" class="swagger-summary-tag" data-traverse-target="tag-{{htmlId name}}">{{name}}</h1>
     {{#if description}}
       <div class="tag-description doc-row">
-        <div class="doc-copy">
+        <div class="doc-copy" style="float: left;">
           {{md description}}
           {{#if diagram_image_name}}
             <div class="diagram">
               <img src="images/{{diagram_image_name}}" title="{{diagram_image_name}}" />
             </div>
           {{/if}}
+          {{#each sections}}
+            <div style="border-bottom: 1px solid #e2e2e2; font-size:24px;">#{{this.name}}</div>
+            <section class="swagger-operation-description" style="padding-top: 1.5em;">
+              <div>{{this.desc}}</div>
+            </section>
+            <section class="swagger-webhook-body" style="padding-top: 1em;">
+              {{#each this.webhook_body}}
+                <div class="prop-row prop-group">
+                  <div class="prop-name">
+                    <div class="prop-title">{{this.field}}:
+                      <span class="prop-type">
+                        <div class="json-property-type">{{this.type}}</div>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="prop-value">
+                    <p>{{this.desc}}</p>
+                  </div>
+                </div>
+              {{/each}}
+            </section>
+            {{#each this.sub_body}}
+              <section class="webhook-section" style="padding-top: 1em;">{{this.section_name}}</section>
+                {{#each this.fields}}
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">{{this.field}}:
+                        <span class="prop-type">
+                          <div class="json-property-type">{{this.type}}</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>{{this.desc}}</p>
+                    </div>
+                  </div>
+                {{/each}}
+            {{/each}}
+            {{#if example_link}}
+              <section class="webhook-section" style="padding-top: 1em;">Body example</section>
+              <script src={{example_link}}></script>
+            {{/if}}
+          {{/each}}
         </div>
       </div>
     {{/if}}
