@@ -1,4 +1,4 @@
-introspection: https://farn-brown.staging365.net:5000/api/v1.0/graphql
+introspection: https://api.page365.net/v1.0/graphql
 
 servers:
   - url: https://api.staging365.net/v1.0/graphql
