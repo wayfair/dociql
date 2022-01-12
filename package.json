@@ -1,6 +1,6 @@
 {
   "name": "dociql",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Generate beautiful static API documentation from GraphQL Schema",
   "preferGlobal": true,
   "bin": {
