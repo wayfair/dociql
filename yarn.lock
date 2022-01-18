@@ -1376,13 +1376,6 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
-functional-json-schema@0.0.2-3:
-  version "0.0.2-3"
-  resolved "https://registry.yarnpkg.com/functional-json-schema/-/functional-json-schema-0.0.2-3.tgz#51e62e82d2b0b93447b13b204601618683d81cd3"
-  integrity sha512-g8+l/yMSW50E5jeBEqzIArUg6lfPy++J63OVM1sS9CFq4PM6Vf1QMmZjwNiofRKlP5bTHKrHHvD6BZv0K9R10A==
-  dependencies:
-    lodash "^4.17.10"
-
 gauge@~2.7.3:
   version "2.7.4"
   resolved "https://registry.yarnpkg.com/gauge/-/gauge-2.7.4.tgz#2c03405c7538c39d7eb37b317022e325fb018bf7"
@@ -1558,13 +1551,12 @@ graphlib@^2.1.8:
   dependencies:
     lodash "^4.17.15"
 
-graphql-2-json-schema@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/graphql-2-json-schema/-/graphql-2-json-schema-0.2.0.tgz#ef02d7d422071be199bfb4d3c6719f3431005661"
-  integrity sha512-INEySjzTCb+oI8RTVBGQDHBgOiXtHlcR47MKvyWtaiJbptUBUXHlfO1njI89NeU+KIF6cUnAqmKgyYgyJVYwbA==
+graphql-2-json-schema@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/graphql-2-json-schema/-/graphql-2-json-schema-0.9.0.tgz#f8891d8da071aecbca60c0fdaaa95f77ffc2687b"
+  integrity sha512-Xi6dhFagYzZZlL44ou/Gs8stBusrZVhcFfCtQ314WArTvhQXbNbjVG5TNkO/+1MOQUPO7xNQ1TgCQ0TwlWgRXg==
   dependencies:
-    functional-json-schema "0.0.2-3"
-    lodash "^4.17.10"
+    lodash "^4.17.20"
 
 graphql-json-schema@^0.1.2:
   version "0.1.2"
@@ -2580,7 +2572,7 @@ lodash.toplainobject@^3.0.0:
     lodash._basecopy "^3.0.0"
     lodash.keysin "^3.0.0"
 
-lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@~4.17.10, lodash@~4.17.11, lodash@~4.17.19, lodash@~4.17.21:
+lodash@^4.0.0, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.20, lodash@~4.17.10, lodash@~4.17.11, lodash@~4.17.19, lodash@~4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
