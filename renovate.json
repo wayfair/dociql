@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":dependencyDashboard",
+    ":rebaseStalePrs"
+  ],
+  "schedule": [
+    "before 3am every weekday" 
+  ],
+  "enabledManagers": [
+    "npm",
+    "dockerfile",
+    "github-actions"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["grunt"],
+      "matchPackagePrefixes": ["grunt-"],
+      "groupName": "Grunt"
+    },
+     {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "Minor Packages",
+      "automerge": true
+    }
+  ]
+}
