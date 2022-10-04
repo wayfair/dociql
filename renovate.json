@@ -5,6 +5,7 @@
     ":dependencyDashboard",
     ":rebaseStalePrs"
   ],
+  "includeForks": true,
   "schedule": [
     "before 3am every weekday" 
   ],
