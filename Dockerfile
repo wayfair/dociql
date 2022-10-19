@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:19-alpine
 MAINTAINER Kam Low <hello@sourcey.com>
 
 USER 0
