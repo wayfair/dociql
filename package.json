@@ -58,7 +58,7 @@
     "grunt-prettify": "0.4.0",
     "grunt-sass": "3.1.0",
     "handlebars": "4.7.7",
-    "highlight.js": "9.18.5",
+    "highlight.js": "11.10.0",
     "js-yaml": "3.14.1",
     "json-refs": "3.0.15",
     "json-stable-stringify": "1.0.1",
