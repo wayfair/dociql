@@ -70,7 +70,7 @@
     "trace": "3.1.1"
   },
   "devDependencies": {
-    "chai": "4.3.6",
+    "chai": "5.1.2",
     "codecov": "3.8.2",
     "mocha": "8.4.0",
     "nyc": "14.1.1"
